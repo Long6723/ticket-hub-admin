@@ -14,6 +14,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { Outlet, useNavigate } from "react-router";
+import "./main-layout.css";
 
 const { Header, Sider, Content } = Layout;
 
@@ -28,7 +29,7 @@ const App: React.FC = () => {
     <Layout style={{ height: 911 }}>
       {/* <Layout> */}
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
+        <div />
         <Menu
           theme="dark"
           mode="inline"

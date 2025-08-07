@@ -21,4 +21,5 @@ export default [
     route("revenue", "routes/revenue/revenue.tsx"),
   ]),
   route("dev", "routes/dev/component.tsx"),
+  route("login", "routes/login/login.tsx"),
 ] satisfies RouteConfig;

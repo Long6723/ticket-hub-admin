@@ -1,16 +1,12 @@
 import React from "react";
 import { Button, type ButtonProps } from "antd";
 
-interface CommonButtonProps extends ButtonProps {
+interface MyButtonProps extends ButtonProps {
   label?: string; // Cho phép truyền text riêng
 }
 
-const CommonButton: React.FC<CommonButtonProps> = ({
-  label,
-  children,
-  ...rest
-}) => {
+const MyButton: React.FC<MyButtonProps> = ({ label, children, ...rest }) => {
   return <Button {...rest}>{label || children}</Button>;
 };
 
-export default CommonButton;
+export default MyButton;
