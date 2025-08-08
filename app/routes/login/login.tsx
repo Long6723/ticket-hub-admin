@@ -1,7 +1,7 @@
 import React from "react";
 import type { FormProps } from "antd";
 import { Button, Form } from "antd";
-import CommonInput from "~/components/input/input";
+import MyInput from "~/components/input/input";
 
 type FieldType = {
   username?: string;
@@ -33,7 +33,7 @@ const App: React.FC = () => (
       name="username"
       rules={[{ required: true, message: "Vui lòng nhập tên đăng nhập!" }]}
     >
-      <CommonInput />
+      <MyInput />
     </Form.Item>
 
     <Form.Item<FieldType>
@@ -41,7 +41,7 @@ const App: React.FC = () => (
       name="password"
       rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
     >
-      <CommonInput type="password" />
+      <MyInput type="password" />
     </Form.Item>
 
     <Form.Item label={null}>
