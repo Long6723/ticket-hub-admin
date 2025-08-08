@@ -1,49 +1,42 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
+import { isRouteErrorResponse, Outlet } from "react-router";
 import React from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
-
-export function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
-    </html>
-  );
-}
+import { ConfigProvider } from "antd";
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <ConfigProvider
+      theme={{
+        components: {
+          Input: {
+            activeBorderColor: "none", // màu khi focus
+            hoverBorderColor: "none", // màu khi hover
+            activeShadow: "none",
+          },
+          InputNumber: {
+            activeBorderColor: "none",
+            hoverBorderColor: "none",
+            activeShadow: "none",
+          },
+          Button: {
+            colorPrimary: "#e30713",
+            colorPrimaryHover: "#cc0610",
+            colorPrimaryActive: "#b0050e",
+            colorTextLightSolid: "#fff",
+          },
+        },
+        token: {
+          // colorText: "#fff",
+          colorPrimary: "#e30713",
+          borderRadius: 20,
+        },
+      }}
+    >
+      <Outlet />
+    </ConfigProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
