@@ -26,7 +26,7 @@ const App: React.FC = () => {
 
   const navigate = useNavigate();
   return (
-    <Layout style={{ height: 911 }}>
+    <Layout style={{ height: 1271 }}>
       {/* <Layout> */}
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div />
