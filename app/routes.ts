@@ -19,6 +19,7 @@ export default [
     route("room", "routes/room/room.tsx"),
     route("room layout", "routes/room-layout/room-layout.tsx"),
     route("revenue", "routes/revenue/revenue.tsx"),
+    route("profile", "routes/profile/profile.tsx"),
   ]),
   route("dev", "routes/dev/component.tsx"),
   route("login", "routes/login/login.tsx"),
