@@ -87,6 +87,10 @@ const App: React.FC = () => {
               icon: <BarChartOutlined />,
               label: "Revenue",
             },
+            {
+              key: "profile",
+              label: "Profile",
+            },
           ]}
         />
       </Sider>
