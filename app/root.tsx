@@ -4,38 +4,42 @@ import React from "react";
 import type { Route } from "./+types/root";
 import "./app.css";
 import { ConfigProvider } from "antd";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 export default function App() {
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Input: {
-            activeBorderColor: "none", // màu khi focus
-            hoverBorderColor: "none", // màu khi hover
-            activeShadow: "none",
+    <Provider store={store}>
+      <ConfigProvider
+        theme={{
+          components: {
+            Input: {
+              activeBorderColor: "none",
+              hoverBorderColor: "none",
+              activeShadow: "none",
+            },
+            InputNumber: {
+              activeBorderColor: "none",
+              hoverBorderColor: "none",
+              activeShadow: "none",
+            },
+            Button: {
+              colorPrimary: "#e30713",
+              colorPrimaryHover: "#cc0610",
+              colorPrimaryActive: "#b0050e",
+              colorTextLightSolid: "#fff",
+            },
           },
-          InputNumber: {
-            activeBorderColor: "none",
-            hoverBorderColor: "none",
-            activeShadow: "none",
-          },
-          Button: {
+          token: {
+            // colorText: "#fff",
             colorPrimary: "#e30713",
-            colorPrimaryHover: "#cc0610",
-            colorPrimaryActive: "#b0050e",
-            colorTextLightSolid: "#fff",
+            borderRadius: 20,
           },
-        },
-        token: {
-          // colorText: "#fff",
-          colorPrimary: "#e30713",
-          borderRadius: 20,
-        },
-      }}
-    >
-      <Outlet />
-    </ConfigProvider>
+        }}
+      >
+        <Outlet />
+      </ConfigProvider>
+    </Provider>
   );
 }
 
