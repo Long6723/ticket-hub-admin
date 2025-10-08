@@ -11,9 +11,10 @@ import {
   BarChartOutlined,
   FundProjectionScreenOutlined,
   ClusterOutlined,
+  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate, useLocation } from "react-router";
 import "./main-layout.css";
 
 const { Header, Sider, Content } = Layout;
@@ -25,15 +26,47 @@ const App: React.FC = () => {
   } = theme.useToken();
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const getSelectedKeys = () => {
+    const path = location.pathname;
+
+    if (path.includes("/voucher/discounts")) return ["voucher/discounts"];
+    if (path.includes("/voucher/news")) return ["voucher/news"];
+
+    if (path === "/") return ["/"];
+    if (path.includes("/banner")) return ["banner"];
+    if (path.includes("/account")) return ["account"];
+    if (path.includes("/movies")) return ["movies"];
+    if (path.includes("/genre")) return ["genre"];
+    if (path.includes("/order")) return ["order"];
+    if (path.includes("/room-layout")) return ["room-layout"];
+    if (path.includes("/room")) return ["room"];
+    if (path.includes("/revenue")) return ["revenue"];
+    if (path.includes("/showtime")) return ["showtime"];
+    if (path.includes("/profile")) return ["profile"];
+
+    return ["/"];
+  };
+
+  const getOpenKeys = () => {
+    const path = location.pathname;
+    if (path.includes("/voucher")) return ["voucher"];
+    return [];
+  };
+
+  const [openKeys, setOpenKeys] = useState(getOpenKeys());
+
   return (
-    <Layout style={{ height: 1271 }}>
-      {/* <Layout> */}
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div />
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["/"]}
+          selectedKeys={getSelectedKeys()}
+          openKeys={collapsed ? [] : openKeys}
+          onOpenChange={setOpenKeys}
           onClick={(data) => {
             navigate(data.key);
           }}
@@ -59,6 +92,11 @@ const App: React.FC = () => {
               label: "Movies",
             },
             {
+              key: "genre",
+              icon: <VideoCameraOutlined />,
+              label: "Genre",
+            },
+            {
               key: "voucher",
               icon: <ShoppingOutlined />,
               label: "Voucher",
@@ -78,7 +116,7 @@ const App: React.FC = () => {
               label: "Room",
             },
             {
-              key: "room layout",
+              key: "room-layout",
               icon: <ClusterOutlined />,
               label: "Room layout",
             },
@@ -88,7 +126,13 @@ const App: React.FC = () => {
               label: "Revenue",
             },
             {
+              key: "showtime",
+              icon: <VideoCameraOutlined />,
+              label: "Showtime",
+            },
+            {
               key: "profile",
+              icon: <TeamOutlined />,
               label: "Profile",
             },
           ]}

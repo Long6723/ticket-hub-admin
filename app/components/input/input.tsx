@@ -7,7 +7,7 @@ const { Password } = Input;
 interface MyInputProps extends InputProps, PasswordProps {
   label?: string;
   error?: string;
-  type?: "text" | "password" | "email" | "number"; // chỉ định type rõ ràng
+  type?: "text" | "password" | "email" | "number";
 }
 
 const MyInput: React.FC<MyInputProps> = ({

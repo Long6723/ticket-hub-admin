@@ -17,9 +17,13 @@ export default defineConfig([
     rules: {
       "@typescript-eslint/no-namespace": "off",
       "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
       "no-empty-pattern": "warn",
       "no-undef": "warn",
       "@typescript-eslint/no-empty-object-type": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
   },
 ]);

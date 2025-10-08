@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import type { FormProps } from "antd";
 import { Button, Form } from "antd";
 import MyInput from "~/components/input/input";
-import { loginApi } from "~/api/profile";
+import { loginApi } from "~/api/profile.api";
+import { useNavigate } from "react-router";
 
 type FieldType = {
   username?: string;
@@ -15,15 +16,16 @@ const MESSAGE = {
 
 const App: React.FC = () => {
   const [loginFail, setLoginFail] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     try {
       const data = await loginApi(values);
       window.localStorage.setItem("accessToken", data.accessToken);
+
+      navigate("/");
     } catch (error) {
-      if (error) {
-        setLoginFail(MESSAGE.LOGINFAIL);
-      }
+      setLoginFail(MESSAGE.LOGINFAIL);
     }
   };
 
@@ -61,7 +63,6 @@ const App: React.FC = () => {
           {
             validator: async () => {
               if (loginFail) {
-                console.log(loginFail);
                 return Promise.reject(new Error(loginFail));
               }
               return Promise.resolve();
